@@ -6,14 +6,14 @@ export default async function Comments({ postSlug }: { postSlug: string }) {
 			<h2>| Comments |</h2>
 			<h3>Leave a comment: </h3>
 
-			<form action={`/api/comments/${postSlug}`} method="POST" className="flex flex-col max-w-lg gap-2 black-900">
+			<form action={`/api/comments/${postSlug}`} method="POST" className="flex flex-col max-w-lg gap-2 text-slate-900">
 				<label htmlFor="username">Name:</label>
 				<input type="text" name="username" />
 
 				<label htmlFor="comment">Your comment:</label>
 				<textarea name="comment" cols={30} rows={10} />
 
-				<button type="submit">send comment</button>
+				<button type="submit" className="bg-zinc-200">send comment</button>
 			</form>
 		</div>
 	);
