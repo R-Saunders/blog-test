@@ -26,8 +26,7 @@ export default async function Comments({ postSlug }: { postSlug: string }) {
 
 				<button type="submit" className="bg-zinc-200">send comment</button>
 			</form>
-			{/* @ts-ignore */}
-			{comments.map((comment) => {
+			{comments.map((comment: {id: string; comment: string; username: string;}) => {
 				return (
 					<li key={comment.id}>
 						{comment.username} says... 
