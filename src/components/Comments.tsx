@@ -1,5 +1,16 @@
 export default async function Comments({ postSlug }: { postSlug: string }) {
 	// `/blog/post-1`
+	const WEBSITE_URL = 'http://localhost:300'
+	let comments = [];
+
+	try {
+		const commentsResult = await fetch(`${WEBSITE_URL}/ap/comments/${postSlug}`, {next: {revalidate: 5}});
+		const response = await commentsResult.json();
+		console.log(response)
+		comments = response.comments.rows
+	} catch (err) {
+		console.log(err)
+	}
 
 	return (
 		<div>
@@ -15,6 +26,16 @@ export default async function Comments({ postSlug }: { postSlug: string }) {
 
 				<button type="submit" className="bg-zinc-200">send comment</button>
 			</form>
+			{/* @ts-ignore */}
+			{comments.map((comment) => {
+				return (
+					<li key={comment.id}>
+						{comment.username} says... 
+						<br/> 
+						{comment.comment}
+					</li>
+				)
+			})}
 		</div>
 	);
 }
