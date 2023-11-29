@@ -1,6 +1,6 @@
 export default async function Comments({ postSlug }: { postSlug: string }) {
 	// `/blog/post-1`
-	const WEBSITE_URL = 'http://localhost:300'
+	const WEBSITE_URL = 'http://localhost:3000'
 	let comments = [];
 
 	try {
